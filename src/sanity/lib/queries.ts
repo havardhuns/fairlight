@@ -1,11 +1,25 @@
 import { defineQuery } from "next-sanity";
 
-export const allServicesQuery = defineQuery(`*[_type == "imageGallery"]{
+export const allProjectsQuery =
+  defineQuery(`*[_type == "projects"] | order(date desc){
   _id,
   title,
-  slug,
+  location,
   description,
+  date,
   images[] {
+    asset-> {
+      _id,
+      url
+    },
+    alt
+  }
+}`);
+
+export const shortInfoQuery = defineQuery(`*[_type == "shortInfo"][0]{
+  title,
+  description,
+  image {
     asset-> {
       _id,
       url

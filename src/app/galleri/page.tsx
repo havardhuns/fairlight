@@ -1,8 +1,8 @@
-import { allServicesQuery } from "@/sanity/lib/queries";
+import { allProjectsQuery } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
 
 const Galleri = async () => {
-  const images = await client.fetch(allServicesQuery);
+  const images = await client.fetch(allProjectsQuery);
 
   return (
     <>

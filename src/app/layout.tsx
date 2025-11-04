@@ -26,13 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-950 min-h-screen flex flex-col`}
       >
         <ThemeProvider attribute="class" forcedTheme="dark">
           <Navbar />
-          <main className="flex-1 px-64 grow flex">{children}</main>
+          <main className="flex-1 px-32 grow flex flex-col">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>

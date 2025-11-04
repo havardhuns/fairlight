@@ -16,7 +16,7 @@ import { Separator } from "./ui/separator";
 const Navbar = () => {
   return (
     <nav>
-      <div className="flex items-center justify-between h-16 px-64">
+      <div className="flex items-center justify-between h-24 px-32">
         <Link href="/">
           <Image
             src="/logo.png"
@@ -47,14 +47,14 @@ const Navbar = () => {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link href="/galleri">Galleri</Link>
+                <Link href="/prosjekter">Prosjekter</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
         <Link href="/kontakt">
-          <Button variant="secondary" className="rounded-full">
+          <Button size="lg" variant="secondary" className="rounded-full">
             Kontakt oss
           </Button>
         </Link>

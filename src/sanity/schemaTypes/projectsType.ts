@@ -8,12 +8,23 @@ export const projectsType = defineType({
     {
       name: "title",
       type: "string",
-      title: "Title",
+      title: "Tittel",
     },
+    {
+      name: "location",
+      type: "string",
+      title: "Lokasjon",
+    },
+    {
+      name: "date",
+      type: "date",
+      title: "Dato",
+    },
+    { name: "description", type: "text", title: "Beskrivelse" },
     {
       name: "images",
       type: "array",
-      title: "Images",
+      title: "Bilder",
       of: [
         {
           type: "image",
