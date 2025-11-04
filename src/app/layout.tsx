@@ -32,7 +32,9 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" forcedTheme="dark">
           <Navbar />
-          <main className="flex-1 px-32 grow flex flex-col">{children}</main>
+          <main className="flex-1 px-8 md:px-32 grow flex flex-col">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

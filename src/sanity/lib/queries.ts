@@ -1,5 +1,11 @@
 import { defineQuery } from "next-sanity";
 
+export const projectsOverviewQuery =
+  defineQuery(`*[_type == "projectsOverview"][0]{
+  title,
+  description
+}`);
+
 export const allProjectsQuery =
   defineQuery(`*[_type == "projects"] | order(date desc){
   _id,
