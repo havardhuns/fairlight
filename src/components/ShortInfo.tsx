@@ -24,11 +24,10 @@ const ShortInfo = async () => {
   return (
     <div
       className="w-full flex flex-col items-center gap-10 lg:flex-row lg:gap-20
-    min-h-[calc(100vh-6rem)]
-    "
+    min-h-[calc(100vh-6rem)]"
     >
       <div className="w-full lg:w-1/3">
-        <h1 className="mb-6 text-3xl font-semibold md:text-4xl lg:text-5xl">
+        <h1 className="mb-6 font-semibold text-3xl md:text-4xl lg:text-5xl">
           {shortInfo.title}
         </h1>
         <p className="text-lg leading-relaxed md:text-xl lg:text-2xl">
@@ -58,7 +57,7 @@ const ShortInfo = async () => {
           {/* smaller decorative blur for tasteful depth */}
           <div className="absolute -right-4 -bottom-4 w-28 h-28 rounded-full bg-gradient-to-br from-red-300/30 to-rose-300/20 blur-2xl -z-20" />
 
-          <div className="relative overflow-hidden rounded-xl bg-white/4 backdrop-blur-sm shadow-[0_30px_60px_rgba(139,15,15,0.18)] transform transition-all duration-400 hover:-translate-y-1 hover:scale-105 ring-1 ring-rose-200/10 border-red-50/6">
+          <div className="relative overflow-hidden rounded-xl scale-95 animate-scale-in bg-white/4 backdrop-blur-sm shadow-[0_30px_60px_rgba(139,15,15,0.18)] ring-1 ring-rose-200/10 border-red-50/6">
             {/* soft overlay to add contrast and make photos pop without heavy effects */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/6 to-transparent mix-blend-overlay pointer-events-none" />
 

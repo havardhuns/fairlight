@@ -8,7 +8,6 @@ const Home = () => {
       <ShortInfo />
       <Separator />
       <Projects />
-      <Separator />
     </>
   );
 };

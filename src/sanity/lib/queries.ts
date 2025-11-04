@@ -13,6 +13,8 @@ export const allProjectsQuery =
   location,
   description,
   date,
+  slug,
+  showOnFrontpage,
   images[] {
     asset-> {
       _id,

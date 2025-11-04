@@ -11,6 +11,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import Link from "next/link";
 
 export interface Gallery4Item {
   _id: string;
@@ -53,9 +54,7 @@ const Gallery4 = ({ items }: Gallery4Props) => {
         <Button
           size="icon"
           variant="ghost"
-          onClick={() => {
-            carouselApi?.scrollPrev();
-          }}
+          onClick={() => carouselApi?.scrollPrev()}
           disabled={!canScrollPrev}
           className="disabled:pointer-events-auto"
         >
@@ -64,9 +63,7 @@ const Gallery4 = ({ items }: Gallery4Props) => {
         <Button
           size="icon"
           variant="ghost"
-          onClick={() => {
-            carouselApi?.scrollNext();
-          }}
+          onClick={() => carouselApi?.scrollNext()}
           disabled={!canScrollNext}
           className="disabled:pointer-events-auto"
         >
@@ -84,14 +81,11 @@ const Gallery4 = ({ items }: Gallery4Props) => {
             },
           }}
         >
-          <CarouselContent className="mx-16">
+          <CarouselContent className="md:mx-16">
             {items.map((item) => (
-              <CarouselItem
-                key={item._id}
-                className="max-w-[320px] pl-[20px] lg:max-w-[360px] cursor-pointer"
-              >
-                <a href={item.href} className="group rounded-xl">
-                  <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9]">
+              <CarouselItem key={item._id} className="max-w-90 cursor-pointer">
+                <Link href={item.href} className="group rounded-xl">
+                  <div className="group relative h-full min-h-108 max-w-full overflow-hidden rounded-xl ">
                     <Image
                       src={item.image}
                       alt={item.title}
@@ -117,7 +111,7 @@ const Gallery4 = ({ items }: Gallery4Props) => {
                       </div>
                     </div>
                   </div>
-                </a>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>
