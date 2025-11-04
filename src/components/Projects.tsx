@@ -1,12 +1,20 @@
 import { allProjectsQuery, projectsOverviewQuery } from "@/sanity/lib/queries";
 import { client } from "@/sanity/lib/client";
-import { Gallery4 } from "@/components/blocks/gallery4";
+import { ProjectCarousel } from "@/components/ProjectCarousel";
+import {
+  AllProjectsQueryResult,
+  ProjectsOverviewQueryResult,
+} from "../../sanity.types";
 
 const Projects = async () => {
-  const projectOverview = await client.fetch(projectsOverviewQuery);
-  const projects = await client.fetch(allProjectsQuery);
+  const projectOverview = await client.fetch<ProjectsOverviewQueryResult>(
+    projectsOverviewQuery
+  );
+  const projects = await client.fetch<AllProjectsQueryResult>(allProjectsQuery);
 
-  console.log(projects.map(({ slug }: any) => slug));
+  if (!projectOverview) {
+    return null;
+  }
 
   return (
     <>
@@ -18,15 +26,7 @@ const Projects = async () => {
           {projectOverview.description}
         </p>
       </div>
-      <Gallery4
-        items={projects
-          .filter(({ showOnFrontpage: any }) => !!showOnFrontpage)
-          .map((project: any) => ({
-            ...project,
-            href: `/prosjekter/${project.slug.current}`,
-            image: project.images[0]?.asset?.url,
-          }))}
-      />
+      <ProjectCarousel projects={projects} />
     </>
   );
 };

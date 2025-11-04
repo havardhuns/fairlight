@@ -12,21 +12,13 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import Link from "next/link";
+import { AllProjectsQueryResult } from "../../sanity.types";
 
-export interface Gallery4Item {
-  _id: string;
-  title: string;
-  location: string;
-  description: string;
-  href: string;
-  image: string;
+export interface ProjectCarouselProps {
+  projects: AllProjectsQueryResult;
 }
 
-export interface Gallery4Props {
-  items: Gallery4Item[];
-}
-
-const Gallery4 = ({ items }: Gallery4Props) => {
+const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
@@ -82,13 +74,16 @@ const Gallery4 = ({ items }: Gallery4Props) => {
           }}
         >
           <CarouselContent className="md:mx-16">
-            {items.map((item) => (
+            {projects.map((item) => (
               <CarouselItem key={item._id} className="max-w-90 cursor-pointer">
-                <Link href={item.href} className="group rounded-xl">
+                <Link
+                  href={`/projects/${item.slug?.current}`}
+                  className="group rounded-xl"
+                >
                   <div className="group relative h-full min-h-108 max-w-full overflow-hidden rounded-xl ">
                     <Image
-                      src={item.image}
-                      alt={item.title}
+                      src={item.images?.[0]?.asset?.url || ""}
+                      alt={item.title || "image"}
                       width={0}
                       height={0}
                       sizes="100vw"
@@ -117,7 +112,7 @@ const Gallery4 = ({ items }: Gallery4Props) => {
           </CarouselContent>
         </Carousel>
         <div className="mt-8 flex justify-center gap-2">
-          {items.map((_, index) => (
+          {projects.map((_, index) => (
             <button
               key={index}
               className={`h-2 w-2 rounded-full transition-colors ${
@@ -133,4 +128,4 @@ const Gallery4 = ({ items }: Gallery4Props) => {
   );
 };
 
-export { Gallery4 };
+export { ProjectCarousel };

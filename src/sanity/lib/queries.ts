@@ -21,7 +21,11 @@ export const allProjectsQuery =
       url
     },
     alt
-  }
+  },
+  _type,
+  _createdAt,
+  _updatedAt,
+  _rev
 }`);
 
 export const shortInfoQuery = defineQuery(`*[_type == "shortInfo"][0]{
