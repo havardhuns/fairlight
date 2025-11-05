@@ -29,7 +29,7 @@ const Footer = async () => {
           </p>
         </div>
 
-        <div className="flex flex-col items-start hidden md:block">
+        <div className="flex flex-col items-start invisible md:visible">
           <p className="text-sm font-bold mb-2">Meny</p>
           <Button variant="link" className="p-0 h-6 font-light" asChild>
             <Link href="/">Hjem</Link>
