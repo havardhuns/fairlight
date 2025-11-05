@@ -7,6 +7,7 @@ import {
 import Image from "next/image";
 import { AllProjectsQueryResult } from "../../sanity.types";
 import Link from "next/link";
+import { imageUrlFor } from "@/utils/imageUrlFor";
 
 export interface ProjectListProps {
   projects: AllProjectsQueryResult;
@@ -22,8 +23,8 @@ const ProjectList = ({ projects }: ProjectListProps) => {
             <Card className="overflow-hidden hover:scale-[1.01] transition-transform duration-200">
               <div className="relative h-56 sm:h-44 md:h-56">
                 <Image
-                  src={image?.asset?.url || ""}
-                  alt={image?.alt || project.title || "Project image"}
+                  src={imageUrlFor(image).url()}
+                  alt={project.title || "Project image"}
                   fill
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

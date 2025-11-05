@@ -13,6 +13,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { AllProjectsQueryResult } from "../../sanity.types";
+import { imageUrlFor } from "@/utils/imageUrlFor";
 
 export interface ProjectCarouselProps {
   projects: AllProjectsQueryResult;
@@ -82,7 +83,7 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
                 >
                   <div className="group relative h-full min-h-108 max-w-full overflow-hidden rounded-xl ">
                     <Image
-                      src={item.images?.[0]?.asset?.url || ""}
+                      src={imageUrlFor(item.images?.[0]).url()}
                       alt={item.title || "image"}
                       width={0}
                       height={0}

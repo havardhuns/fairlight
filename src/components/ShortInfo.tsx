@@ -4,18 +4,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { ShortInfoQueryResult } from "../../sanity.types";
-
-type ShortInfo = {
-  title: string;
-  description: string;
-  image: {
-    asset: {
-      _id: string;
-      url: string;
-    };
-    alt: string;
-  };
-};
+import { imageUrlFor } from "@/utils/imageUrlFor";
 
 const ShortInfo = async () => {
   const shortInfo = await client.fetch<ShortInfoQueryResult>(shortInfoQuery);
@@ -64,8 +53,8 @@ const ShortInfo = async () => {
             <div className="relative w-full h-96 md:h-128">
               {shortInfo?.image?.asset && (
                 <Image
-                  src={shortInfo.image.asset.url || ""}
-                  alt={shortInfo.image.alt || "Short Info Image"}
+                  src={imageUrlFor(shortInfo.image).url()}
+                  alt="Short Info Image"
                   fill
                   className="object-cover filter contrast-110 saturate-110"
                   priority

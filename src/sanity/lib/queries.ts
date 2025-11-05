@@ -15,13 +15,7 @@ export const allProjectsQuery =
   date,
   slug,
   showOnFrontpage,
-  images[] {
-    asset-> {
-      _id,
-      url
-    },
-    alt
-  },
+  images[],
   _type,
   _createdAt,
   _updatedAt,
@@ -37,13 +31,7 @@ export const projectBySlugQuery =
   date,
   slug,
   showOnFrontpage,
-  images[] {
-    asset-> {
-      _id,
-      url
-    },
-    alt
-  },
+  images[],
   _type,
   _createdAt,
   _updatedAt,
@@ -53,11 +41,26 @@ export const projectBySlugQuery =
 export const shortInfoQuery = defineQuery(`*[_type == "shortInfo"][0]{
   title,
   description,
-  image {
-    asset-> {
-      _id,
-      url
-    },
-    alt
-  }
+  image,
+}`);
+
+export const aboutInfoQuery = defineQuery(`*[_type == "aboutInfo"][0]{
+  title,
+  description,
+}`);
+
+export const allEmployeesQuery = defineQuery(`*[_type == "employee"]{
+  _id,
+  name,
+  title,
+  photo,
+  description,
+  email
+}`);
+
+export const contactInfoQuery = defineQuery(`*[_type == "contactInfo"][0]{
+  email,
+  phone,
+  location,
+  slogan
 }`);

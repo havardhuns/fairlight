@@ -1,19 +1,58 @@
 import type { StructureResolver } from "sanity/structure";
 
-// https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
   S.list()
     .title("Innhold")
     .items([
-      S.listItem().title("Kort info (fremside)").child(
-        S.document().schemaType("shortInfo").documentId("shortInfoSingleton") // alltid samme ID
-      ),
+      // ▶️ Informasjon-gruppen
       S.listItem()
-        .title("Prosjekter (overordnet)")
+        .title("Informasjon")
         .child(
-          S.document()
-            .schemaType("projectsOverview")
-            .documentId("projectsOverviewSingleton")
+          S.list()
+            .title("Informasjon")
+            .items([
+              S.listItem()
+                .title("Kontaktinformasjon")
+                .child(
+                  S.document()
+                    .schemaType("contactInfo")
+                    .documentId("contactInfoSingleton")
+                ),
+              S.listItem()
+                .title("Kort info (fremside)")
+                .child(
+                  S.document()
+                    .schemaType("shortInfo")
+                    .documentId("shortInfoSingleton")
+                ),
+              S.listItem()
+                .title("Mer info (om oss)")
+                .child(
+                  S.document()
+                    .schemaType("aboutInfo")
+                    .documentId("aboutInfoSingleton")
+                ),
+              S.documentTypeListItem("employee").title("Ansatte"),
+            ])
         ),
-      S.documentTypeListItem("projects").title("Prosjekter (individuelle)"),
+
+      // ▶️ Prosjekter-gruppen
+      S.listItem()
+        .title("Prosjekter")
+        .child(
+          S.list()
+            .title("Prosjekter")
+            .items([
+              S.listItem()
+                .title("Prosjekter (overordnet)")
+                .child(
+                  S.document()
+                    .schemaType("projectsOverview")
+                    .documentId("projectsOverviewSingleton")
+                ),
+              S.documentTypeListItem("projects").title(
+                "Prosjekter (individuelle)"
+              ),
+            ])
+        ),
     ]);

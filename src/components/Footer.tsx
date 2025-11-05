@@ -2,8 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
+import { client } from "@/sanity/lib/client";
+import { aboutInfoQuery, contactInfoQuery } from "@/sanity/lib/queries";
+import {
+  AboutInfoQueryResult,
+  ContactInfoQueryResult,
+} from "../../sanity.types";
 
-const Footer = () => {
+const Footer = async () => {
+  const contactInfo = await client.fetch<ContactInfoQueryResult>(
+    contactInfoQuery
+  );
   return (
     <footer>
       <Separator />
@@ -17,9 +26,8 @@ const Footer = () => {
             sizes="100vw"
             className="w-24 cursor-pointer mb-4"
           />
-          <p className="text-sm text-zinc-400">
-            Profesjonelt lysdesign for scene, show og event. <br />
-            Vi jobber over hele Norge – der vi trengs.
+          <p className="text-sm text-zinc-400 max-w-xs">
+            {contactInfo?.slogan}
           </p>
         </div>
 
@@ -35,7 +43,7 @@ const Footer = () => {
             <Link href="/tjenester">Tjenester</Link>
           </Button>
           <Button variant="link" className="p-0 h-6 font-light" asChild>
-            <Link href="/galleri">Galleri</Link>
+            <Link href="/prosjekter">Prosjekter</Link>
           </Button>
           <Button variant="link" className="p-0 h-6 font-light" asChild>
             <Link href="/kontakt">Kontakt oss</Link>
@@ -44,8 +52,8 @@ const Footer = () => {
 
         <div className="flex flex-col items-start">
           <p className="text-sm font-bold mb-2">Kontakt</p>
-          <p className="text-sm text-zinc-400">kontakt@fairlight.no</p>
-          <p className="text-sm text-zinc-400">+47 123 45 678</p>
+          <p className="text-sm text-zinc-400">{contactInfo?.email}</p>
+          <p className="text-sm text-zinc-400">{contactInfo?.phone}</p>
         </div>
       </div>
     </footer>

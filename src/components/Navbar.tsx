@@ -32,11 +32,6 @@ const Navbar = () => {
           <NavigationMenuList className="flex space-x-4">
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link href="/">Hjem</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
                 <Link href="/om-oss">Om oss</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>

@@ -8,10 +8,14 @@ interface ProjectPageProps {
 }
 
 const ProjectPage = async ({ params }: ProjectPageProps) => {
+  const { slug } = await params;
+
   const project = await client.fetch<ProjectBySlugQueryResult>(
     projectBySlugQuery,
-    await params
+    { slug }
   );
+
+  console.log(project);
 
   if (!project) {
     notFound();

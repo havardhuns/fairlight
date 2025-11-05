@@ -7,8 +7,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { client } from "@/sanity/lib/client";
+import { ContactInfoQueryResult } from "../../../sanity.types";
+import { contactInfoQuery } from "@/sanity/lib/queries";
 
-const Kontakt = () => {
+const Kontakt = async () => {
+  const contactInfo = await client.fetch<ContactInfoQueryResult>(
+    contactInfoQuery
+  );
+
   return (
     <div className="my-8">
       <h1 className="font-semibold text-3xl md:text-4xl lg:text-5xl mb-6">
@@ -21,9 +28,9 @@ const Kontakt = () => {
           </CardHeader>
           <CardContent>
             <Button asChild variant="link" className="text-lg p-0">
-              <a href="mailto:kontakt@fairlight.no">kontakt@fairlight.no</a>
+              <a href={`mailto:${contactInfo?.email}`}>{contactInfo?.email}</a>
             </Button>
-            <p className="text-lg">+47 123 45 678</p>
+            <p className="text-lg">{contactInfo?.phone}</p>
           </CardContent>
         </Card>
 
@@ -42,7 +49,7 @@ const Kontakt = () => {
                 className="w-full h-full"
                 style={{ border: 0 }}
                 loading="lazy"
-                src="https://www.google.com/maps?q=Fredrikstad,Norge&hl=nb&z=12&output=embed&maptype=satellite"
+                src={`https://www.google.com/maps?q=${contactInfo?.location}&hl=nb&z=12&output=embed&maptype=satellite`}
               ></iframe>
             </div>
           </CardContent>
