@@ -5,6 +5,7 @@ import {
   AllEmployeesQueryResult,
 } from "../../../sanity.types";
 import EmployeeCard from "@/components/EmployeeCard";
+import { Title } from "@/components/ui/typography";
 
 const OmOss = async () => {
   const aboutInfo = await client.fetch<AboutInfoQueryResult>(aboutInfoQuery);
@@ -17,10 +18,8 @@ const OmOss = async () => {
   }
 
   return (
-    <div className="my-8">
-      <h1 className="font-semibold text-2xl md:text-3xl lg:text-4xl mb-4">
-        {aboutInfo.title}
-      </h1>
+    <div>
+      <Title>{aboutInfo.title}</Title>
       <p className="text-lg leading-relaxed md:text-lg lg:text-xl max-w-4xl text-secondary-foreground">
         {aboutInfo.description}
       </p>

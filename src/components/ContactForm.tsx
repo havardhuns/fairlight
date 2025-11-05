@@ -13,8 +13,9 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Field, FieldError, FieldLabel } from "./ui/field";
+import { Field, FieldLabel } from "./ui/field";
 import { useState } from "react";
+import { cn } from "@/lib/utils";
 
 export interface ContactFormProps {
   className?: string;
@@ -88,10 +89,11 @@ const ContactForm = ({ className }: ContactFormProps) => {
                     aria-invalid={fieldState.invalid}
                     placeholder="Ditt navn"
                     autoComplete="off"
+                    className={cn(
+                      "h-12 text-lg",
+                      fieldState.invalid && "border-red-400"
+                    )}
                   />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
                 </Field>
               )}
             />
@@ -115,10 +117,11 @@ const ContactForm = ({ className }: ContactFormProps) => {
                     aria-invalid={fieldState.invalid}
                     placeholder="din@epost.no"
                     autoComplete="off"
+                    className={cn(
+                      "h-12 text-lg",
+                      fieldState.invalid && "border-red-400"
+                    )}
                   />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
                 </Field>
               )}
             />
@@ -137,9 +140,6 @@ const ContactForm = ({ className }: ContactFormProps) => {
                     rows={5}
                     className="h-64"
                   />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
                 </Field>
               )}
             />

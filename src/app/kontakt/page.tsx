@@ -11,6 +11,7 @@ import { client } from "@/sanity/lib/client";
 import { ContactInfoQueryResult } from "../../../sanity.types";
 import { contactInfoQuery } from "@/sanity/lib/queries";
 import MapsPreview from "@/components/MapsPreview";
+import { Title } from "@/components/ui/typography";
 
 const Kontakt = async () => {
   const contactInfo = await client.fetch<ContactInfoQueryResult>(
@@ -27,11 +28,9 @@ const Kontakt = async () => {
   const coords = data.results?.[0]?.geometry?.location || null;
 
   return (
-    <div className="my-8">
-      <h1 className="font-semibold text-3xl md:text-4xl lg:text-5xl mb-6">
-        Kontakt oss
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-5 gap-4 w-full">
+    <div>
+      <Title>Kontakt oss</Title>
+      <div className="py-4 grid grid-cols-1 md:grid-cols-2 grid-rows-4 gap-4 w-full">
         <Card className="col-span-1 row-span-1">
           <CardHeader>
             <CardTitle>Kontaktinformasjon</CardTitle>

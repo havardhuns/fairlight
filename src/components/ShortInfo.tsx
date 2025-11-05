@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ShortInfoQueryResult } from "../../sanity.types";
 import { imageUrlFor } from "@/utils/imageUrlFor";
+import { Title } from "./ui/typography";
 
 const ShortInfo = async () => {
   const shortInfo = await client.fetch<ShortInfoQueryResult>(shortInfoQuery);
@@ -16,9 +17,7 @@ const ShortInfo = async () => {
     min-h-[calc(100vh-6rem)]"
     >
       <div className="w-full lg:w-1/3">
-        <h1 className="mb-6 font-semibold text-3xl md:text-4xl lg:text-5xl">
-          {shortInfo?.title}
-        </h1>
+        <Title>{shortInfo?.title}</Title>
         <p className="text-lg leading-relaxed md:text-xl lg:text-2xl">
           {shortInfo?.description}
         </p>

@@ -2,6 +2,7 @@ import { client } from "@/sanity/lib/client";
 import { projectBySlugQuery } from "@/sanity/lib/queries";
 import { notFound } from "next/navigation";
 import { ProjectBySlugQueryResult } from "../../../../sanity.types";
+import { Title } from "@/components/ui/typography";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -23,7 +24,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
 
   return (
     <div>
-      <h1>{project.title}</h1>
+      <Title>{project.title}</Title>
       <p>{project.description}</p>
     </div>
   );

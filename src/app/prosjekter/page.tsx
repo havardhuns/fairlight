@@ -5,6 +5,7 @@ import {
   ProjectsOverviewQueryResult,
 } from "../../../sanity.types";
 import ProjectList from "@/components/ProjectList";
+import { Title } from "@/components/ui/typography";
 
 const Projects = async () => {
   const projects = await client.fetch<AllProjectsQueryResult>(allProjectsQuery);
@@ -17,11 +18,9 @@ const Projects = async () => {
   }
 
   return (
-    <div className="my-8">
-      <div className="flex flex-col gap-4 mb-4">
-        <h1 className="font-semibold text-3xl md:text-4xl lg:text-5xl">
-          {projectsOverview.title}
-        </h1>
+    <div>
+      <div className="mb-4">
+        <Title>{projectsOverview.title}</Title>
         <p className="max-w-lg text-muted-foreground">
           {projectsOverview.description}
         </p>
