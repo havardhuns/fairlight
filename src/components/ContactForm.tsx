@@ -16,6 +16,7 @@ import {
 import { Field, FieldLabel } from "./ui/field";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Spinner } from "@/components/ui/spinner";
 
 export interface ContactFormProps {
   className?: string;
@@ -28,7 +29,12 @@ type FormValues = {
 };
 
 const ContactForm = ({ className }: ContactFormProps) => {
-  const { control, handleSubmit, reset } = useForm<FormValues>({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<FormValues>({
     defaultValues: {
       name: "",
       email: "",
@@ -64,6 +70,17 @@ const ContactForm = ({ className }: ContactFormProps) => {
       setError("Kunne ikke sende meldingen. Sjekk internettforbindelsen din.");
     }
   };
+
+  if (isSent) {
+    return (
+      <Card className={className}>
+        <CardContent className="text-center py-12">
+          <h2 className="font-semibold text-2xl mb-4">Takk for din melding!</h2>
+          <p>Vi vil komme tilbake til deg så snart som mulig.</p>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card className={className}>
@@ -146,7 +163,10 @@ const ContactForm = ({ className }: ContactFormProps) => {
           </CardContent>
           <CardFooter className="flex gap-2 justify-between">
             <p className="text-red-500">{error}</p>
-            <Button type="submit">Send melding</Button>
+            <Button type="submit">
+              {isSubmitting && <Spinner />}
+              Send melding
+            </Button>
           </CardFooter>
         </form>
       ) : (
