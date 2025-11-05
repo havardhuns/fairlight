@@ -32,7 +32,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" forcedTheme="dark">
           <Navbar />
-          <main className="flex-1 px-8 md:px-32 py-4 md:py-8 grow flex flex-col">
+          <main className="flex-1 px-8 md:px-32 py-4 md:py-8 grow flex flex-col min-h-[calc(100vh-6rem)]">
             {children}
           </main>
           <Footer />

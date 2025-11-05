@@ -20,10 +20,10 @@ const OmOss = async () => {
   return (
     <div>
       <Title>{aboutInfo.title}</Title>
-      <p className="text-lg leading-relaxed md:text-lg lg:text-xl max-w-4xl text-secondary-foreground">
+      <p className="text-lg leading-relaxed md:text-lg lg:text-xl max-w-4xl text-secondary-foreground mb-4">
         {aboutInfo.description}
       </p>
-      <div className="flex flex-col md:flex-row mt-8 md:mt-16">
+      <div className="flex flex-col md:flex-row md:mt-16">
         {employees.map((employee) => (
           <EmployeeCard key={employee._id} employee={employee} />
         ))}

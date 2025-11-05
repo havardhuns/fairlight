@@ -16,7 +16,7 @@ export interface EmployeeCardProps {
 
 const EmployeeCard = ({ employee }: EmployeeCardProps) => {
   return (
-    <Card className="m-6">
+    <Card className="my-2 md:m-6">
       <CardHeader className="flex flex-row items-center gap-4">
         <Avatar className="w-16 h-16">
           <AvatarImage src={imageUrlFor(employee.photo).url()} alt="Image" />
