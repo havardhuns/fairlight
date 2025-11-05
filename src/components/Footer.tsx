@@ -3,20 +3,18 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { client } from "@/sanity/lib/client";
-import { aboutInfoQuery, contactInfoQuery } from "@/sanity/lib/queries";
-import {
-  AboutInfoQueryResult,
-  ContactInfoQueryResult,
-} from "../../sanity.types";
+import { contactInfoQuery } from "@/sanity/lib/queries";
+import { ContactInfoQueryResult } from "../../sanity.types";
 
 const Footer = async () => {
   const contactInfo = await client.fetch<ContactInfoQueryResult>(
     contactInfoQuery
   );
+
   return (
     <footer>
       <Separator />
-      <div className="flex items-start gap-64 px-64 py-8">
+      <div className="flex items-start gap-12 md:gap-64 px-8 md:px-64 py-8">
         <div className="flex flex-col">
           <Image
             src="/logo.png"
@@ -31,7 +29,7 @@ const Footer = async () => {
           </p>
         </div>
 
-        <div className="flex flex-col items-start">
+        <div className="flex flex-col items-start hidden md:block">
           <p className="text-sm font-bold mb-2">Meny</p>
           <Button variant="link" className="p-0 h-6 font-light" asChild>
             <Link href="/">Hjem</Link>

@@ -91,7 +91,7 @@ export interface MapsPreviewProps {
 
 const MapsPreview = ({ coords }: MapsPreviewProps) => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyAH21RlgWKEJlntsxk2HO4EuEWHwogtuqM",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
   });
 
   if (!isLoaded) {
@@ -99,18 +99,20 @@ const MapsPreview = ({ coords }: MapsPreviewProps) => {
   }
 
   return (
-    <GoogleMap
-      mapContainerStyle={{
-        width: "100%",
-        height: "100%",
-        borderRadius: "8px",
-      }}
-      center={coords}
-      zoom={12}
-      options={{ styles, disableDefaultUI: true }}
-    >
-      <Marker position={coords} />
-    </GoogleMap>
+    <div className="h-64 md:h-full">
+      <GoogleMap
+        mapContainerStyle={{
+          width: "100%",
+          height: "100%",
+          borderRadius: "8px",
+        }}
+        center={coords}
+        zoom={12}
+        options={{ styles, disableDefaultUI: true }}
+      >
+        <Marker position={coords} />
+      </GoogleMap>
+    </div>
   );
 };
 
