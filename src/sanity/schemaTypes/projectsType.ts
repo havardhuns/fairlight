@@ -23,6 +23,16 @@ export const projectsType = defineType({
       title: "Dato",
       validation: (Rule) => Rule.required(),
     },
+    {
+      name: "client",
+      type: "string",
+      title: "Kunde",
+    },
+    {
+      name: "eventType",
+      type: "string",
+      title: "Type event",
+    },
     { name: "description", type: "text", title: "Beskrivelse" },
     {
       name: "images",

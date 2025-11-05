@@ -32,6 +32,8 @@ export const projectBySlugQuery =
   slug,
   showOnFrontpage,
   images[],
+  client,
+  eventType,
   _type,
   _createdAt,
   _updatedAt,

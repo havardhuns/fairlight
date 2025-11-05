@@ -78,6 +78,8 @@ export type Projects = {
   title?: string;
   location?: string;
   date?: string;
+  client?: string;
+  eventType?: string;
   description?: string;
   images?: Array<{
     asset?: {
@@ -274,7 +276,7 @@ export type AllProjectsQueryResult = Array<{
   _rev: string;
 }>;
 // Variable: projectBySlugQuery
-// Query: *[_type == "projects" && slug.current == $slug][0]{  _id,  title,  location,  description,  date,  slug,  showOnFrontpage,  images[],  _type,  _createdAt,  _updatedAt,  _rev}
+// Query: *[_type == "projects" && slug.current == $slug][0]{  _id,  title,  location,  description,  date,  slug,  showOnFrontpage,  images[],  client,  eventType,  _type,  _createdAt,  _updatedAt,  _rev}
 export type ProjectBySlugQueryResult = {
   _id: string;
   title: string | null;
@@ -296,6 +298,8 @@ export type ProjectBySlugQueryResult = {
     _type: "image";
     _key: string;
   }> | null;
+  client: string | null;
+  eventType: string | null;
   _type: "projects";
   _createdAt: string;
   _updatedAt: string;
@@ -361,7 +365,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"projectsOverview\"][0]{\n  title,\n  description\n}": ProjectsOverviewQueryResult;
     "*[_type == \"projects\"] | order(date desc){\n  _id,\n  title,\n  location,\n  description,\n  date,\n  slug,\n  showOnFrontpage,\n  images[],\n  _type,\n  _createdAt,\n  _updatedAt,\n  _rev\n}": AllProjectsQueryResult;
-    "*[_type == \"projects\" && slug.current == $slug][0]{\n  _id,\n  title,\n  location,\n  description,\n  date,\n  slug,\n  showOnFrontpage,\n  images[],\n  _type,\n  _createdAt,\n  _updatedAt,\n  _rev\n}": ProjectBySlugQueryResult;
+    "*[_type == \"projects\" && slug.current == $slug][0]{\n  _id,\n  title,\n  location,\n  description,\n  date,\n  slug,\n  showOnFrontpage,\n  images[],\n  client,\n  eventType,\n  _type,\n  _createdAt,\n  _updatedAt,\n  _rev\n}": ProjectBySlugQueryResult;
     "*[_type == \"shortInfo\"][0]{\n  title,\n  description,\n  image,\n}": ShortInfoQueryResult;
     "*[_type == \"aboutInfo\"][0]{\n  title,\n  description,\n}": AboutInfoQueryResult;
     "*[_type == \"employee\"]{\n  _id,\n  name,\n  title,\n  photo,\n  description,\n  email\n}": AllEmployeesQueryResult;

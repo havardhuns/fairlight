@@ -78,7 +78,7 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
             {projects.map((item) => (
               <CarouselItem key={item._id} className="max-w-90 cursor-pointer">
                 <Link
-                  href={`/projects/${item.slug?.current}`}
+                  href={`/prosjekter/${item.slug?.current}`}
                   className="group rounded-xl"
                 >
                   <div className="group relative h-full min-h-108 max-w-full overflow-hidden rounded-xl ">
