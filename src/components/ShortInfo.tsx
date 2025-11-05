@@ -13,8 +13,8 @@ const ShortInfo = async () => {
   //left 50% of screen is title and description, right side is image
   return (
     <div
-      className="w-full flex flex-col items-center gap-10 lg:flex-row lg:gap-20
-    min-h-[calc(100vh-6rem)]"
+      className="w-full md:pb-8 flex flex-col items-center gap-10 lg:flex-row lg:gap-20
+    min-h-[calc(100vh-8rem)]"
     >
       <div className="w-full lg:w-1/3">
         <Title>{shortInfo?.title}</Title>
