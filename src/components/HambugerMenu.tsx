@@ -36,7 +36,7 @@ const HamburgerMenu = ({ items = [] }: HamburgerMenuProps) => {
         <div
           className={`xl:invisible min-h-[calc(100vh-5rem)] absolute w-screen z-40 top-20 left-0  overflow-hidden bg-zinc-950`}
         >
-          <div className="flex flex-col gap-4 p-4 items-start pl-8">
+          <div className="flex flex-col gap-4 p-4 pt-8 items-start pl-8">
             {items.map((item) => (
               <Button
                 variant="link"
