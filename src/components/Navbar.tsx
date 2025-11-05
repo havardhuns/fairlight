@@ -2,13 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
