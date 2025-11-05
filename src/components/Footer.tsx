@@ -14,7 +14,7 @@ const Footer = async () => {
   return (
     <footer>
       <Separator />
-      <div className="flex items-start gap-12 md:gap-64 px-8 md:px-64 py-8">
+      <div className="flex items-start md:gap-64 px-8 md:px-64 py-8">
         <div className="flex flex-col">
           <Image
             src="/logo.png"

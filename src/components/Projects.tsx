@@ -18,7 +18,7 @@ const Projects = async () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4 mt-8 mb-4">
+      <div className="flex flex-col gap-4 mt-16 md:mt-8 mb-4">
         <h2 className="font-semibold text-2xl md:text-3xl lg:text-4xl">
           {projectOverview.title}
         </h2>

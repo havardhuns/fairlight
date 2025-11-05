@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <ShortInfo />
-      <Separator />
+      <Separator className="hidden md:block" />
       <Projects />
     </>
   );
