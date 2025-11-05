@@ -10,11 +10,21 @@ import {
 import { client } from "@/sanity/lib/client";
 import { ContactInfoQueryResult } from "../../../sanity.types";
 import { contactInfoQuery } from "@/sanity/lib/queries";
+import MapsPreview from "@/components/MapsPreview";
 
 const Kontakt = async () => {
   const contactInfo = await client.fetch<ContactInfoQueryResult>(
     contactInfoQuery
   );
+
+  const address = contactInfo?.location ?? "";
+  const res = await fetch(
+    `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(
+      address
+    )}&key=${process.env.GOOGLE_MAPS_API_KEY}`
+  );
+  const data = await res.json();
+  const coords = data.results?.[0]?.geometry?.location || null;
 
   return (
     <div className="my-8">
@@ -44,14 +54,7 @@ const Kontakt = async () => {
             <CardDescription className="text-xl">
               Vi jobber over hele Norge – der vi trengs.
             </CardDescription>
-            <div className="flex-1 rounded-lg overflow-hidden border">
-              <iframe
-                className="w-full h-full"
-                style={{ border: 0 }}
-                loading="lazy"
-                src={`https://www.google.com/maps?q=${contactInfo?.location}&hl=nb&z=12&output=embed&maptype=satellite`}
-              ></iframe>
-            </div>
+            <MapsPreview address={address} coords={coords} />
           </CardContent>
         </Card>
       </div>
