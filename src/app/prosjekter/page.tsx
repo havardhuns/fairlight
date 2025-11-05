@@ -6,7 +6,7 @@ import {
 } from "../../../sanity.types";
 import ProjectList from "@/components/ProjectList";
 
-const Galleri = async () => {
+const Projects = async () => {
   const projects = await client.fetch<AllProjectsQueryResult>(allProjectsQuery);
   const projectsOverview = await client.fetch<ProjectsOverviewQueryResult>(
     projectsOverviewQuery
@@ -31,4 +31,4 @@ const Galleri = async () => {
   );
 };
 
-export default Galleri;
+export default Projects;

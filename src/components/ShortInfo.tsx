@@ -33,7 +33,7 @@ const ShortInfo = async () => {
         <p className="text-lg leading-relaxed md:text-xl lg:text-2xl">
           {shortInfo?.description}
         </p>
-        <Link href="/om-oss">
+        <Link href="/prosjekter">
           <Button size="lg" className="mt-8 rounded-full">
             Se prosjekter
           </Button>

@@ -221,6 +221,28 @@ export type AllProjectsQueryResult = Array<{
   _updatedAt: string;
   _rev: string;
 }>;
+// Variable: projectBySlugQuery
+// Query: *[_type == "projects" && slug.current == $slug][0]{  _id,  title,  location,  description,  date,  slug,  showOnFrontpage,  images[] {    asset-> {      _id,      url    },    alt  },  _type,  _createdAt,  _updatedAt,  _rev}
+export type ProjectBySlugQueryResult = {
+  _id: string;
+  title: string | null;
+  location: string | null;
+  description: string | null;
+  date: string | null;
+  slug: Slug | null;
+  showOnFrontpage: boolean | null;
+  images: Array<{
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+    alt: null;
+  }> | null;
+  _type: "projects";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+} | null;
 // Variable: shortInfoQuery
 // Query: *[_type == "shortInfo"][0]{  title,  description,  image {    asset-> {      _id,      url    },    alt  }}
 export type ShortInfoQueryResult = {
@@ -241,6 +263,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"projectsOverview\"][0]{\n  title,\n  description\n}": ProjectsOverviewQueryResult;
     "*[_type == \"projects\"] | order(date desc){\n  _id,\n  title,\n  location,\n  description,\n  date,\n  slug,\n  showOnFrontpage,\n  images[] {\n    asset-> {\n      _id,\n      url\n    },\n    alt\n  },\n  _type,\n  _createdAt,\n  _updatedAt,\n  _rev\n}": AllProjectsQueryResult;
+    "*[_type == \"projects\" && slug.current == $slug][0]{\n  _id,\n  title,\n  location,\n  description,\n  date,\n  slug,\n  showOnFrontpage,\n  images[] {\n    asset-> {\n      _id,\n      url\n    },\n    alt\n  },\n  _type,\n  _createdAt,\n  _updatedAt,\n  _rev\n}": ProjectBySlugQueryResult;
     "*[_type == \"shortInfo\"][0]{\n  title,\n  description,\n  image {\n    asset-> {\n      _id,\n      url\n    },\n    alt\n  }\n}": ShortInfoQueryResult;
   }
 }

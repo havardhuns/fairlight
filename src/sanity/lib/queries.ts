@@ -28,6 +28,28 @@ export const allProjectsQuery =
   _rev
 }`);
 
+export const projectBySlugQuery =
+  defineQuery(`*[_type == "projects" && slug.current == $slug][0]{
+  _id,
+  title,
+  location,
+  description,
+  date,
+  slug,
+  showOnFrontpage,
+  images[] {
+    asset-> {
+      _id,
+      url
+    },
+    alt
+  },
+  _type,
+  _createdAt,
+  _updatedAt,
+  _rev
+}`);
+
 export const shortInfoQuery = defineQuery(`*[_type == "shortInfo"][0]{
   title,
   description,
