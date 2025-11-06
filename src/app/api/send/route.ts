@@ -15,7 +15,11 @@ export async function POST(req: Request) {
 
     const { data, error } = await resend.emails.send({
       from: "Fairlight <kontakt-fairlight@resend.dev>",
-      to: ["kontakt@fairlight.no, thomas@fairlight.no, havardhuns@gmail.com"],
+      to: [
+        "kontakt@fairlight.no",
+        "thomas@fairlight.no",
+        "havardhuns@gmail.com",
+      ],
       subject: `Henvendelse fra kontaktskjema: ${name}`,
       replyTo: email,
       html: `
@@ -24,7 +28,7 @@ export async function POST(req: Request) {
     });
 
     if (error) {
-      return Response.json({ error }, { status: 500 });
+      return Response.json({ error: error.message }, { status: 500 });
     }
 
     return Response.json({ success: true, data });
