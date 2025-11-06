@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: "Fairlight <kontakt-fairlight@resend.dev>",
+      from: "Fairlight <kontaktskjema@fairlight.no>",
       to: [
         "kontakt@fairlight.no",
         "thomas@fairlight.no",
