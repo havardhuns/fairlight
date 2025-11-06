@@ -5,7 +5,7 @@ import {
   ProjectsOverviewQueryResult,
 } from "../../../sanity.types";
 import ProjectList from "@/components/ProjectList";
-import { Title } from "@/components/ui/typography";
+import { Description, Title } from "@/components/ui/typography";
 
 const Projects = async () => {
   const projects = await client.fetch<AllProjectsQueryResult>(allProjectsQuery);
@@ -21,9 +21,7 @@ const Projects = async () => {
     <div>
       <div className="mb-4">
         <Title>{projectsOverview.title}</Title>
-        <p className="max-w-lg text-muted-foreground">
-          {projectsOverview.description}
-        </p>
+        <Description>{projectsOverview.description}</Description>
       </div>
       <ProjectList projects={projects} />
     </div>

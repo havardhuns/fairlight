@@ -13,6 +13,26 @@
  */
 
 // Source: schema.json
+export type Service = {
+  _id: string;
+  _type: "service";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+};
+
+export type ServicesOverview = {
+  _id: string;
+  _type: "servicesOverview";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  description?: string;
+};
+
 export type Employee = {
   _id: string;
   _type: "employee";
@@ -238,7 +258,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Employee | AboutInfo | ContactInfo | ProjectsOverview | Projects | ShortInfo | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Service | ServicesOverview | Employee | AboutInfo | ContactInfo | ProjectsOverview | Projects | ShortInfo | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: projectsOverviewQuery
@@ -358,6 +378,18 @@ export type ContactInfoQueryResult = {
   location: string | null;
   slogan: string | null;
 } | null;
+// Variable: servicesOverviewQuery
+// Query: *[_type == "servicesOverview"][0]{  title,  description}
+export type ServicesOverviewQueryResult = {
+  title: string | null;
+  description: string | null;
+} | null;
+// Variable: allServicesQuery
+// Query: *[_type == "projects"] | order(_createdAt asc){  title,  description  }
+export type AllServicesQueryResult = Array<{
+  title: string | null;
+  description: string | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -370,5 +402,7 @@ declare module "@sanity/client" {
     "*[_type == \"aboutInfo\"][0]{\n  title,\n  description,\n}": AboutInfoQueryResult;
     "*[_type == \"employee\"]{\n  _id,\n  name,\n  title,\n  photo,\n  description,\n  email\n}": AllEmployeesQueryResult;
     "*[_type == \"contactInfo\"][0]{\n  email,\n  phone,\n  location,\n  slogan\n}": ContactInfoQueryResult;
+    "*[_type == \"servicesOverview\"][0]{\n  title,\n  description\n}": ServicesOverviewQueryResult;
+    "*[_type == \"projects\"] | order(_createdAt asc){\n  title,\n  description\n  }": AllServicesQueryResult;
   }
 }

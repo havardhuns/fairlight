@@ -30,7 +30,7 @@ function Description({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       className={cn(
-        "text-lg leading-relaxed md:text-lg lg:text-xl max-w-4xl text-gray-300 mb-4",
+        "text-lg md:text-lg lg:text-xl max-w-4xl text-gray-300 mb-4",
         className
       )}
       {...props}

@@ -66,3 +66,16 @@ export const contactInfoQuery = defineQuery(`*[_type == "contactInfo"][0]{
   location,
   slogan
 }`);
+
+export const servicesOverviewQuery =
+  defineQuery(`*[_type == "servicesOverview"][0]{
+  title,
+  description
+}`);
+
+export const allServicesQuery = defineQuery(
+  `*[_type == "service"] | order(_createdAt asc){
+  title,
+  description
+  }`
+);

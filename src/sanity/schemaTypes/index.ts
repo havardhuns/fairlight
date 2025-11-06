@@ -5,6 +5,8 @@ import { projectsType } from "./projectsType";
 import { fairlightInfoType } from "./contactInfo";
 import { aboutInfoType } from "./aboutInfoType";
 import { employeeType } from "./employeeType";
+import { servicesOverviewType } from "./servicesOverviewType";
+import { serviceType } from "./serviceType";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -14,5 +16,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     fairlightInfoType,
     aboutInfoType,
     employeeType,
+    servicesOverviewType,
+    serviceType,
   ],
 };

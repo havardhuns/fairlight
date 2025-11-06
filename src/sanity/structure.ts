@@ -55,4 +55,22 @@ export const structure: StructureResolver = (S) =>
               ),
             ])
         ),
+      S.listItem()
+        .title("Tjenester")
+        .child(
+          S.list()
+            .title("Tjenester")
+            .items([
+              S.listItem()
+                .title("Tjenester (overordnet)")
+                .child(
+                  S.document()
+                    .schemaType("servicesOverview")
+                    .documentId("servicesOverviewSingleton")
+                ),
+              S.documentTypeListItem("service").title(
+                "Tjenester (individuelle)"
+              ),
+            ])
+        ),
     ]);
