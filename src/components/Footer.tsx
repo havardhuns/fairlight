@@ -14,7 +14,7 @@ const Footer = async () => {
   return (
     <footer>
       <Separator />
-      <div className="flex items-start md:gap-64 px-8 md:px-64 py-8">
+      <div className="flex items-start md:gap-32 lg:gap-64 px-8 md:px-32 lg:px-64 py-8">
         <div className="flex flex-col">
           <Image
             src="/logo.png"
@@ -29,7 +29,7 @@ const Footer = async () => {
           </p>
         </div>
 
-        <div className="flex flex-col items-start invisible md:visible">
+        <div className="flex flex-col items-start invisible lg:visible">
           <p className="text-sm font-bold mb-2">Meny</p>
           <Button variant="link" className="p-0 h-6 font-light" asChild>
             <Link href="/">Hjem</Link>

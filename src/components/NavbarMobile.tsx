@@ -21,7 +21,7 @@ const NavbarMobile = ({ className, ...props }: React.ComponentProps<"nav">) => {
 
   return (
     <nav className={className} {...props}>
-      <div className="flex items-center justify-between h-24 px-8">
+      <div className="flex items-center justify-between h-24 px-8 md:px-16">
         <Link href="/" onClick={() => setIsOpen(false)}>
           <Image
             src="/logo.png"
@@ -69,7 +69,7 @@ export interface MenuProps {
 const Menu = ({ items = [], closeMenu }: MenuProps) => {
   return (
     <div
-      className={`md:invisible min-h-[calc(100vh-5rem)] absolute w-screen z-40 top-20 left-0  overflow-hidden bg-zinc-950`}
+      className={`lg:invisible min-h-[calc(100vh-5rem)] absolute w-screen z-40 top-20 left-0  overflow-hidden bg-zinc-950`}
     >
       <div className="flex flex-col gap-4 p-4 pt-8 items-start pl-8">
         {items.map((item) => (
@@ -77,7 +77,7 @@ const Menu = ({ items = [], closeMenu }: MenuProps) => {
             variant="link"
             asChild
             key={item.href}
-            className="p-0 text-2xl"
+            className="p-0 text-2xl md:text-3xl"
             size="lg"
           >
             <Link href={item.href} onClick={closeMenu}>
