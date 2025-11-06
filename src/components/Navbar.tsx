@@ -8,12 +8,11 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
-import HamburgerMenu from "./HambugerMenu";
 
-const Navbar = () => {
+const Navbar = ({ className, ...props }: React.ComponentProps<"nav">) => {
   return (
-    <nav>
-      <div className="flex items-center justify-between h-24 px-8 md:px-32">
+    <nav className={className} {...props}>
+      <div className="flex items-center justify-between h-24 px-32">
         <Link href="/">
           <Image
             src="/logo.png"
@@ -25,7 +24,7 @@ const Navbar = () => {
           />
         </Link>
 
-        <NavigationMenu className="hidden md:block">
+        <NavigationMenu>
           <NavigationMenuList className="flex space-x-4">
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
@@ -45,21 +44,13 @@ const Navbar = () => {
           </NavigationMenuList>
         </NavigationMenu>
 
-        <Link href="/kontakt" className="hidden md:block">
+        <Link href="/kontakt">
           <Button size="lg" variant="secondary" className="rounded-full">
             Kontakt oss
           </Button>
         </Link>
-        <HamburgerMenu
-          items={[
-            { label: "Om oss", href: "/om-oss" },
-            { label: "Tjenester", href: "/tjenester" },
-            { label: "Prosjekter", href: "/prosjekter" },
-            { label: "Kontakt oss", href: "/kontakt" },
-          ]}
-        />
       </div>
-      <Separator className="hidden md:block" />
+      <Separator />
     </nav>
   );
 };
