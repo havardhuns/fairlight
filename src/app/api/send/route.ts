@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     const { data, error } = await resend.emails.send({
       from: "Fairlight <kontakt-fairlight@resend.dev>",
-      to: ["havardhuns@gmail.com"],
+      to: ["kontakt@fairlight.no, thomas@fairlight.no, havardhuns@gmail.com"],
       subject: `Henvendelse fra kontaktskjema: ${name}`,
       replyTo: email,
       html: `
