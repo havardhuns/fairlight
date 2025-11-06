@@ -23,34 +23,7 @@ const Navbar = ({ className, ...props }: React.ComponentProps<"nav">) => {
             className="w-48 cursor-pointer mb-2"
           />
         </Link>
-
-        <NavigationMenu>
-          <NavigationMenuList className="flex space-x-4">
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/om-oss">Om oss</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/tjenester">Tjenester</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild>
-                <Link href="/prosjekter">Prosjekter</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        <Link href="/kontakt">
-          <Button size="lg" variant="secondary" className="rounded-full">
-            Kontakt oss
-          </Button>
-        </Link>
       </div>
-      <Separator />
     </nav>
   );
 };
