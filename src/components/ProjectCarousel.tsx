@@ -13,7 +13,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { AllProjectsQueryResult } from "../../sanity.types";
-import { imageUrlFor } from "@/utils/imageUrlFor";
+import { imageUrlFor } from "@/utils/image";
 
 export interface ProjectCarouselProps {
   projects: AllProjectsQueryResult;

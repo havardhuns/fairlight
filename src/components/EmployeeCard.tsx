@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AllEmployeesQueryResult } from "../../sanity.types";
-import { imageUrlFor } from "@/utils/imageUrlFor";
+import { imageUrlFor } from "@/utils/image";
 import { Button } from "./ui/button";
 
 export interface EmployeeCardProps {

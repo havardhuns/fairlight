@@ -7,7 +7,7 @@ import {
 import Image from "next/image";
 import { AllProjectsQueryResult } from "../../sanity.types";
 import Link from "next/link";
-import { imageUrlFor } from "@/utils/imageUrlFor";
+import { imageUrlFor } from "@/utils/image";
 
 export interface ProjectListProps {
   projects: AllProjectsQueryResult;

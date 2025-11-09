@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { ShortInfoQueryResult } from "../../sanity.types";
-import { imageUrlFor } from "@/utils/imageUrlFor";
+import { imageUrlFor } from "@/utils/image";
 import { Title } from "./ui/typography";
 
 const ShortInfo = async () => {

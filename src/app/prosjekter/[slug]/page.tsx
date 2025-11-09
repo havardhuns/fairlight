@@ -4,8 +4,10 @@ import { notFound } from "next/navigation";
 import { ProjectBySlugQueryResult } from "../../../../sanity.types";
 import { Body, Description, SubTitle, Title } from "@/components/ui/typography";
 import Image from "next/image";
-import { imageUrlFor } from "@/utils/imageUrlFor";
+import { imageUrlFor } from "@/utils/image";
 import { Separator } from "@/components/ui/separator";
+import ImageGallery from "@/components/ImageGallery";
+import { SanityImageObject } from "@sanity/image-url/lib/types/types";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -63,23 +65,16 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
           <Description>{project.description}</Description>
         </div>
       </div>
-      <Separator />
-      <div className="my-8">
-        <SubTitle>Galleri</SubTitle>
-        <Body>Et utvalg bilder fra eventet.</Body>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {project.images?.map((image) => (
-            <div key={image._key} className="relative w-full h-48">
-              <Image
-                src={imageUrlFor(image).url()}
-                alt={project.title || ""}
-                fill
-                className="object-cover rounded"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      {project.images && (
+        <>
+          <Separator />
+          <div className="my-8">
+            <SubTitle>Galleri</SubTitle>
+            <Body>Et utvalg bilder fra eventet.</Body>
+            <ImageGallery images={project.images as SanityImageObject[]} />
+          </div>
+        </>
+      )}
     </div>
   );
 };
