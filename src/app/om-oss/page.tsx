@@ -7,6 +7,10 @@ import {
 import EmployeeCard from "@/components/EmployeeCard";
 import { Description, Title } from "@/components/ui/typography";
 
+export const metadata = {
+  title: "Om oss | Fairlight",
+};
+
 const OmOss = async () => {
   const aboutInfo = await client.fetch<AboutInfoQueryResult>(aboutInfoQuery);
   const employees = await client.fetch<AllEmployeesQueryResult>(

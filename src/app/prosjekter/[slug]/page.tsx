@@ -13,6 +13,19 @@ interface ProjectPageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const generateMetadata = async ({ params }: ProjectPageProps) => {
+  const { slug } = await params;
+
+  const project = await client.fetch<ProjectBySlugQueryResult>(
+    projectBySlugQuery,
+    { slug }
+  );
+
+  return {
+    title: `${project?.title || "Prosjekt"} | Fairlight`,
+  };
+};
+
 const ProjectPage = async ({ params }: ProjectPageProps) => {
   const { slug } = await params;
 

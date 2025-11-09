@@ -20,6 +20,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Fairlight",
   description: "Lysdesign som løfter opplevelser",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

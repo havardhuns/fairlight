@@ -13,6 +13,10 @@ import { contactInfoQuery } from "@/sanity/lib/queries";
 import MapsPreview from "@/components/MapsPreview";
 import { Title } from "@/components/ui/typography";
 
+export const metadata = {
+  title: "Kontakt | Fairlight",
+};
+
 const Kontakt = async () => {
   const contactInfo = await client.fetch<ContactInfoQueryResult>(
     contactInfoQuery

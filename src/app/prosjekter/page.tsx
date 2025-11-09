@@ -7,6 +7,10 @@ import {
 import ProjectList from "@/components/ProjectList";
 import { Description, Title } from "@/components/ui/typography";
 
+export const metadata = {
+  title: "Prosjekter | Fairlight",
+};
+
 const Projects = async () => {
   const projects = await client.fetch<AllProjectsQueryResult>(allProjectsQuery);
   const projectsOverview = await client.fetch<ProjectsOverviewQueryResult>(

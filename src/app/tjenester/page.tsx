@@ -1,25 +1,15 @@
 import { client } from "@/sanity/lib/client";
+import { allServicesQuery, servicesOverviewQuery } from "@/sanity/lib/queries";
 import {
-  aboutInfoQuery,
-  allEmployeesQuery,
-  allServicesQuery,
-  servicesOverviewQuery,
-} from "@/sanity/lib/queries";
-import {
-  AboutInfoQueryResult,
-  AllEmployeesQueryResult,
   AllServicesQueryResult,
   ServicesOverviewQueryResult,
 } from "../../../sanity.types";
-import EmployeeCard from "@/components/EmployeeCard";
 import { Description, Title } from "@/components/ui/typography";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+export const metadata = {
+  title: "Tjenester | Fairlight",
+};
 
 const Tjenester = async () => {
   const servicesOverview = await client.fetch<ServicesOverviewQueryResult>(
