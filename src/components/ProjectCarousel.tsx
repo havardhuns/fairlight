@@ -76,12 +76,15 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
         >
           <CarouselContent className="md:mx-16">
             {projects.map((item) => (
-              <CarouselItem key={item._id} className="max-w-90 cursor-pointer">
+              <CarouselItem
+                key={item._id}
+                className="basis-[80%] md:max-w-90 cursor-pointer"
+              >
                 <Link
                   href={`/prosjekter/${item.slug?.current}`}
                   className="group rounded-xl"
                 >
-                  <div className="group relative h-full min-h-108 max-w-full overflow-hidden rounded-xl ">
+                  <div className="group relative h-full min-h-90 md:min-h-108 max-w-full overflow-hidden rounded-xl ">
                     <Image
                       src={imageUrlFor(item.images?.[0]).url()}
                       alt={item.title || "image"}
