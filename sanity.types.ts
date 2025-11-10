@@ -98,7 +98,6 @@ export type Projects = {
   title?: string;
   location?: string;
   date?: string;
-  client?: string;
   eventType?: string;
   description?: string;
   images?: Array<{
@@ -318,7 +317,7 @@ export type ProjectBySlugQueryResult = {
     _type: "image";
     _key: string;
   }> | null;
-  client: string | null;
+  client: null;
   eventType: string | null;
   _type: "projects";
   _createdAt: string;
@@ -385,7 +384,7 @@ export type ServicesOverviewQueryResult = {
   description: string | null;
 } | null;
 // Variable: allServicesQuery
-// Query: *[_type == "projects"] | order(_createdAt asc){  title,  description  }
+// Query: *[_type == "service"] | order(_createdAt asc){  title,  description  }
 export type AllServicesQueryResult = Array<{
   title: string | null;
   description: string | null;
@@ -403,6 +402,6 @@ declare module "@sanity/client" {
     "*[_type == \"employee\"]{\n  _id,\n  name,\n  title,\n  photo,\n  description,\n  email\n}": AllEmployeesQueryResult;
     "*[_type == \"contactInfo\"][0]{\n  email,\n  phone,\n  location,\n  slogan\n}": ContactInfoQueryResult;
     "*[_type == \"servicesOverview\"][0]{\n  title,\n  description\n}": ServicesOverviewQueryResult;
-    "*[_type == \"projects\"] | order(_createdAt asc){\n  title,\n  description\n  }": AllServicesQueryResult;
+    "*[_type == \"service\"] | order(_createdAt asc){\n  title,\n  description\n  }": AllServicesQueryResult;
   }
 }

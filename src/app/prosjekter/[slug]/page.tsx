@@ -57,10 +57,6 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
         <div className="md:w-1/2">
           <SubTitle className="my-4">Detaljer</SubTitle>
           <Body>
-            <span className="font-semibold text-white">Kunde:</span>{" "}
-            {project.client}
-          </Body>
-          <Body>
             <span className="font-semibold text-white">Sted:</span>{" "}
             {project.location}
           </Body>

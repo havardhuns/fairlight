@@ -24,11 +24,6 @@ export const projectsType = defineType({
       validation: (Rule) => Rule.required(),
     },
     {
-      name: "client",
-      type: "string",
-      title: "Kunde",
-    },
-    {
       name: "eventType",
       type: "string",
       title: "Type event",
