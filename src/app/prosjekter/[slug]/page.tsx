@@ -8,6 +8,7 @@ import { imageUrlFor } from "@/utils/image";
 import { Separator } from "@/components/ui/separator";
 import ImageGallery from "@/components/ImageGallery";
 import { SanityImageObject } from "@sanity/image-url/lib/types/types";
+import { formatToMonthYear } from "@/utils/date";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -61,8 +62,8 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
             {project.location}
           </Body>
           <Body>
-            <span className="font-semibold text-white">Dato:</span>{" "}
-            {project.date}
+            <span className="font-semibold text-white">Når:</span>{" "}
+            {project.date ? formatToMonthYear(project.date) : null}
           </Body>
           <Body>
             <span className="font-semibold text-white">Type event:</span>{" "}
