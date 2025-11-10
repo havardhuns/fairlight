@@ -21,6 +21,9 @@ export const projectsType = defineType({
       name: "date",
       type: "date",
       title: "Dato",
+      options: {
+        dateFormat: "MM-YYYY",
+      },
       validation: (Rule) => Rule.required(),
     },
     {
