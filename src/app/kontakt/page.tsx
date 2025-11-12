@@ -29,7 +29,10 @@ const Kontakt = async () => {
     )}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`
   );
   const data = await res.json();
-  const coords = data.results?.[0]?.geometry?.location || null;
+  const coords = data.results?.[0]?.geometry?.location || {
+    lat: 59.22053689999999,
+    lng: 10.9347012,
+  };
 
   return (
     <div>
