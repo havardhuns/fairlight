@@ -94,8 +94,6 @@ const MapsPreview = ({ coords }: MapsPreviewProps) => {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
   });
 
-  console.log(coords);
-
   if (!isLoaded) {
     return <Loading />;
   }
