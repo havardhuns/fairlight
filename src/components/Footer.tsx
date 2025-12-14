@@ -50,7 +50,13 @@ const Footer = async () => {
 
         <div className="flex flex-col items-start">
           <p className="text-sm font-bold mb-2">Kontakt</p>
-          <p className="text-sm text-zinc-400">{contactInfo?.email}</p>
+          <Button
+            asChild
+            variant="link"
+            className="text-sm text-zinc-400 p-0 h-5 font-normal"
+          >
+            <a href={`mailto:${contactInfo?.email}`}>{contactInfo?.email}</a>
+          </Button>
           <p className="text-sm text-zinc-400">{contactInfo?.phone}</p>
         </div>
       </div>
