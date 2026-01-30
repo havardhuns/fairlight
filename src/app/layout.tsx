@@ -38,7 +38,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" forcedTheme="dark">
           <Navbar className="hidden lg:block" />
           <NavbarMobile className="lg:hidden" />
-          <main className="flex-1 px-8 md:px-16 lg:px-32 py-4 md:py-8 grow flex flex-col min-h-[calc(100vh-6rem)]">
+          <main className="flex-1 px-8 md:px-16 lg:px-32 8xl:px-128 py-4 md:py-8 grow flex flex-col min-h-[calc(100vh-6rem)]">
             {children}
           </main>
           <Footer />

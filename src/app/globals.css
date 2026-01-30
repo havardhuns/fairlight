@@ -43,6 +43,11 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+@theme {
+  --breakpoint-4xl: 128rem;
+  --breakpoint-8xl: 192rem;
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
