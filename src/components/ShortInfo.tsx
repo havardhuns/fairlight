@@ -10,7 +10,6 @@ import { Title } from "./ui/typography";
 const ShortInfo = async () => {
   const shortInfo = await client.fetch<ShortInfoQueryResult>(shortInfoQuery);
 
-  //left 50% of screen is title and description, right side is image
   return (
     <div
       className="w-full md:pb-8 flex flex-col items-stretch gap-10 lg:flex-row lg:gap-20
@@ -51,7 +50,7 @@ const ShortInfo = async () => {
             {/* soft overlay to add contrast and make photos pop without heavy effects */}
             <div className="absolute inset-0 bg-linear-to-t from-black/6 to-transparent mix-blend-overlay pointer-events-none" />
 
-            <div className="relative w-full h-96 md:h-full">
+            <div className="relative w-full h-96 md:h-[520px] lg:h-full">
               {shortInfo?.image?.asset && (
                 <Image
                   src={imageUrlFor(shortInfo.image).url()}
