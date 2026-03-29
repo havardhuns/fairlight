@@ -27,15 +27,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),
     vercelDeployTool({
-      // Optional preconfigured projects
-      projects: [
-        {
-          name: process.env.NEXT_PUBLIC_VERCEL_ENV!,
-          projectId: process.env.NEXT_PUBLIC_VERCEL_PROJECT_ID,
-          teamId: process.env.NEXT_PUBLIC_VERCEL_TEAM_ID,
-          url: "https://api.vercel.com/v1/integrations/deploy/prj_UivqS5XXAbsZtNkpVuxnPhGaHbA2/j2LQ6TWpzn",
-        },
-      ],
+      projects: [],
     }),
   ],
 });
