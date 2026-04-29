@@ -23,9 +23,17 @@ const OmOss = async () => {
 
   return (
     <div>
-      <Title>{aboutInfo.title}</Title>
-      <Description>{aboutInfo.description}</Description>
-      <div className="flex flex-col md:flex-row md:mt-16">
+      <div className="max-w-2xl">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-px bg-rose-400" />
+          <p className="text-xs font-semibold uppercase tracking-widest text-rose-400">
+            Om oss
+          </p>
+        </div>
+        <Title>{aboutInfo.title}</Title>
+        <Description>{aboutInfo.description}</Description>
+      </div>
+      <div className="flex flex-col md:flex-row gap-4 mt-12">
         {employees.map((employee) => (
           <EmployeeCard key={employee._id} employee={employee} />
         ))}

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { MouseEventHandler, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Separator } from "./ui/separator";
 
 const NavbarMobile = ({ className, ...props }: React.ComponentProps<"nav">) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +22,7 @@ const NavbarMobile = ({ className, ...props }: React.ComponentProps<"nav">) => {
 
   return (
     <nav className={className} {...props}>
-      <div className="flex items-center justify-between h-24 px-8 md:px-16">
+      <div className="flex items-center justify-between h-20 px-8 md:px-16">
         <Link href="/" onClick={() => setIsOpen(false)}>
           <Image
             src="/logo.png"
@@ -29,20 +30,20 @@ const NavbarMobile = ({ className, ...props }: React.ComponentProps<"nav">) => {
             width={0}
             height={0}
             sizes="100vw"
-            className="w-48 cursor-pointer mb-2"
+            className="w-36 cursor-pointer"
           />
         </Link>
 
-        {!isOpen ? (
-          <Button variant="outline" onClick={() => setIsOpen(true)}>
-            <MenuIcon />
-          </Button>
-        ) : (
-          <Button variant="outline" onClick={() => setIsOpen(false)}>
-            <XIcon />
-          </Button>
-        )}
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => setIsOpen((v) => !v)}
+          aria-label={isOpen ? "Lukk meny" : "Åpne meny"}
+        >
+          {isOpen ? <XIcon className="size-5" /> : <MenuIcon className="size-5" />}
+        </Button>
       </div>
+      <Separator />
       {isOpen && (
         <Menu
           items={[
@@ -68,23 +69,23 @@ export interface MenuProps {
 
 const Menu = ({ items = [], closeMenu }: MenuProps) => {
   return (
-    <div
-      className={`lg:invisible min-h-[calc(100vh-5rem)] absolute w-screen z-40 top-20 left-0  overflow-hidden bg-zinc-950`}
-    >
-      <div className="flex flex-col gap-4 p-4 pt-8 items-start pl-8">
+    <div className="min-h-[calc(100vh-5rem)] absolute w-screen z-40 top-[5rem] left-0 bg-background">
+      <div className="flex flex-col gap-2 p-8 pt-12 items-start">
         {items.map((item) => (
-          <Button
-            variant="link"
-            asChild
+          <Link
             key={item.href}
-            className="p-0 text-2xl md:text-3xl"
-            size="lg"
+            href={item.href}
+            onClick={closeMenu}
+            className="font-display font-normal text-3xl md:text-4xl text-muted-foreground hover:text-rose-400 transition-colors duration-200 py-2"
           >
-            <Link href={item.href} onClick={closeMenu}>
-              {item.label}
-            </Link>
-          </Button>
+            {item.label}
+          </Link>
         ))}
+        <div className="mt-8">
+          <Button asChild size="lg" className="rounded-full px-6">
+            <Link href="/kontakt" onClick={closeMenu}>Kontakt oss</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );

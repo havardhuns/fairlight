@@ -21,6 +21,17 @@ export type Service = {
   _rev: string;
   title?: string;
   description?: string;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
 };
 
 export type ServicesOverview = {
@@ -384,10 +395,21 @@ export type ServicesOverviewQueryResult = {
   description: string | null;
 } | null;
 // Variable: allServicesQuery
-// Query: *[_type == "service"] | order(_createdAt asc){  title,  description  }
+// Query: *[_type == "service"] | order(_createdAt asc){  title,  description,  image  }
 export type AllServicesQueryResult = Array<{
   title: string | null;
   description: string | null;
+  image: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
 }>;
 
 // Query TypeMap
@@ -402,6 +424,6 @@ declare module "@sanity/client" {
     "*[_type == \"employee\"]{\n  _id,\n  name,\n  title,\n  photo,\n  description,\n  email\n}": AllEmployeesQueryResult;
     "*[_type == \"contactInfo\"][0]{\n  email,\n  phone,\n  location,\n  slogan\n}": ContactInfoQueryResult;
     "*[_type == \"servicesOverview\"][0]{\n  title,\n  description\n}": ServicesOverviewQueryResult;
-    "*[_type == \"service\"] | order(_createdAt asc){\n  title,\n  description\n  }": AllServicesQueryResult;
+    "*[_type == \"service\"] | order(_createdAt asc){\n  title,\n  description,\n  image\n  }": AllServicesQueryResult;
   }
 }

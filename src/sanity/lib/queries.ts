@@ -76,6 +76,7 @@ export const servicesOverviewQuery =
 export const allServicesQuery = defineQuery(
   `*[_type == "service"] | order(_createdAt asc){
   title,
-  description
+  description,
+  image
   }`
 );

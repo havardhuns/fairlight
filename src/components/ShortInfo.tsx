@@ -11,59 +11,60 @@ const ShortInfo = async () => {
   const shortInfo = await client.fetch<ShortInfoQueryResult>(shortInfoQuery);
 
   return (
-    <div
-      className="w-full md:pb-8 flex flex-col items-stretch gap-10 lg:flex-row lg:gap-20
-    h-[calc(100vh-8rem)] max-h-[1200px]"
-    >
-      <div className="w-full lg:w-1/3 flex items-center">
-        <div>
-          <Title>{shortInfo?.title}</Title>
-          <p className="text-lg leading-relaxed md:text-xl lg:text-2xl">
+    <div className="w-full flex flex-col items-stretch gap-8 lg:flex-row lg:gap-20 lg:h-[calc(100vh-8rem)] lg:max-h-[1200px]">
+
+      {/* ── Text side ── */}
+      <div className="w-full lg:w-1/3 flex items-start lg:items-center py-8 lg:py-0">
+        <div className="w-full">
+          <div className="flex items-center gap-3 mb-5">
+            <div className="w-8 h-px bg-rose-400" />
+            <p className="text-xs font-semibold uppercase tracking-widest text-rose-400">
+              Lysdesign & Teknikk
+            </p>
+          </div>
+
+          <Title className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
+            {shortInfo?.title}
+          </Title>
+
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xs mt-2 mb-8">
             {shortInfo?.description}
           </p>
-          <Link href="/prosjekter">
-            <Button size="lg" className="mt-8 rounded-full">
-              Se prosjekter
+
+          <div className="flex flex-wrap gap-3">
+            <Button asChild size="lg" className="rounded-full px-7">
+              <Link href="/prosjekter">Se prosjekter</Link>
             </Button>
-          </Link>
-          <Link href="/kontakt">
-            <Button
-              size="lg"
-              className="mt-8 ml-4 rounded-full"
-              variant="secondary"
-            >
-              Snakk med oss
+            <Button asChild size="lg" className="rounded-full px-7" variant="secondary">
+              <Link href="/kontakt">Snakk med oss</Link>
             </Button>
-          </Link>
-        </div>
-      </div>
-      <div className="w-full lg:w-2/3 flex justify-center md:px-12 8xl:px-32 md:py-32 8xl:py-48">
-        {/* widened max width and subtler accents for a premium look */}
-        <div className="relative w-full">
-          {/* soft red glow behind the image (subtle) */}
-          <div className="absolute -inset-1 bg-linear-to-r from-red-500 via-rose-600 to-red-800 rounded-lg blur-2xl opacity-20 -z-10" />
-
-          {/* smaller decorative blur for tasteful depth */}
-          <div className="absolute -right-4 -bottom-4 w-28 h-28 rounded-full bg-linear-to-br from-red-300/30 to-rose-300/20 blur-2xl -z-20" />
-
-          <div className="relative overflow-hidden rounded-xl scale-95 animate-scale-in bg-white/4 backdrop-blur-sm shadow-[0_30px_60px_rgba(139,15,15,0.18)] ring-1 ring-rose-200/10 border-red-50/6 h-full">
-            {/* soft overlay to add contrast and make photos pop without heavy effects */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/6 to-transparent mix-blend-overlay pointer-events-none" />
-
-            <div className="relative w-full h-96 md:h-[520px] lg:h-full">
-              {shortInfo?.image?.asset && (
-                <Image
-                  src={imageUrlFor(shortInfo.image).url()}
-                  alt="Short Info Image"
-                  fill
-                  className="object-cover filter contrast-110 saturate-110"
-                  priority
-                />
-              )}
-            </div>
           </div>
         </div>
       </div>
+
+      {/* ── Image side — original proportions ── */}
+      <div className="w-full lg:w-2/3 flex justify-center lg:px-12 8xl:px-32 lg:py-32 8xl:py-48">
+        <div className="relative w-full h-64 sm:h-80 md:h-[520px] lg:h-full">
+
+          {/* rose glow behind image */}
+          <div className="absolute -inset-2 bg-linear-to-r from-red-500 via-rose-600 to-red-800 rounded-xl blur-3xl opacity-20 -z-10" />
+          <div className="absolute -right-4 -bottom-4 w-32 h-32 rounded-full bg-linear-to-br from-red-300/30 to-rose-300/20 blur-2xl -z-20" />
+
+          <div className="relative overflow-hidden rounded-xl scale-95 animate-scale-in bg-white/5 shadow-[0_30px_60px_rgba(139,15,15,0.18)] ring-1 ring-rose-200/10 h-full">
+            <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none z-10" />
+            {shortInfo?.image?.asset && (
+              <Image
+                src={imageUrlFor(shortInfo.image).url()}
+                alt="Fairlight"
+                fill
+                className="object-cover"
+                priority
+              />
+            )}
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

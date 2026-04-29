@@ -98,15 +98,15 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
                     <div className="absolute inset-0 bg-linear-to-t from-black/60 from-0% to-transparent to-50%" />
 
                     <div className="absolute inset-x-0 bottom-0 flex flex-col items-start p-6 text-white drop-shadow-lg md:p-8">
-                      <div className="pt-4 text-xl font-semibold">
+                      <div className="pt-4 font-display font-normal text-2xl leading-tight">
                         {item.title}
                       </div>
-                      <div className="mb-4 line-clamp-2 opacity-90 md:mb-6">
+                      <div className="mb-4 line-clamp-2 text-sm opacity-75 md:mb-6">
                         {item.location}
                       </div>
-                      <div className="flex items-center text-sm font-medium">
+                      <div className="flex items-center text-xs font-semibold uppercase tracking-wider text-rose-400 group-hover:text-rose-300 transition-colors">
                         Se mer
-                        <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
                   </div>
@@ -115,12 +115,14 @@ const ProjectCarousel = ({ projects }: ProjectCarouselProps) => {
             ))}
           </CarouselContent>
         </Carousel>
-        <div className="mt-8 flex justify-center gap-2">
+        <div className="mt-6 flex justify-center gap-2">
           {projects.map((_, index) => (
             <button
               key={index}
-              className={`h-2 w-2 rounded-full transition-colors ${
-                currentSlide === index ? "bg-primary" : "bg-primary/20"
+              className={`rounded-full transition-all duration-300 ${
+                currentSlide === index
+                  ? "bg-rose-400 w-6 h-2"
+                  : "bg-white/20 w-2 h-2 hover:bg-white/40"
               }`}
               onClick={() => carouselApi?.scrollTo(index)}
               aria-label={`Go to slide ${index + 1}`}

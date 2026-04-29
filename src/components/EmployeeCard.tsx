@@ -1,14 +1,7 @@
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { AllEmployeesQueryResult } from "../../sanity.types";
 import { imageUrlFor } from "@/utils/image";
-import { Button } from "./ui/button";
 
 export interface EmployeeCardProps {
   employee: AllEmployeesQueryResult[number];
@@ -16,26 +9,29 @@ export interface EmployeeCardProps {
 
 const EmployeeCard = ({ employee }: EmployeeCardProps) => {
   return (
-    <Card className="my-2 md:m-6">
+    <Card className="flex-1">
       <CardHeader className="flex flex-row items-center gap-4">
-        <Avatar className="w-16 h-16">
-          <AvatarImage src={imageUrlFor(employee.photo).url()} alt="Image" />
+        <Avatar className="w-24 h-24">
+          <AvatarImage src={imageUrlFor(employee.photo).url()} alt={employee.name ?? ""} />
           <AvatarFallback>{employee.name?.charAt(0)}</AvatarFallback>
         </Avatar>
         <div>
           <CardTitle>{employee.name}</CardTitle>
-          <CardDescription className="text-lg">
+          <p className="text-xs font-semibold uppercase tracking-widest text-rose-400 mt-1">
             {employee.title}
-          </CardDescription>
+          </p>
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-secondary-foreground text-xl">
+        <p className="text-sm text-muted-foreground leading-relaxed">
           {employee.description}
         </p>
-        <Button variant="link" asChild className="mt-4 p-0">
-          <a href={`mailto:${employee.email}`}>{employee.email}</a>
-        </Button>
+        <a
+          href={`mailto:${employee.email}`}
+          className="text-sm text-rose-400 hover:underline underline-offset-4 mt-3 block transition-colors"
+        >
+          {employee.email}
+        </a>
       </CardContent>
     </Card>
   );

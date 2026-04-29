@@ -12,7 +12,7 @@ import { Separator } from "./ui/separator";
 const Navbar = ({ className, ...props }: React.ComponentProps<"nav">) => {
   return (
     <nav className={className} {...props}>
-      <div className="flex items-center justify-between h-24 px-32">
+      <div className="flex items-center justify-between h-20 px-32">
         <Link href="/">
           <Image
             src="/logo.png"
@@ -20,35 +20,48 @@ const Navbar = ({ className, ...props }: React.ComponentProps<"nav">) => {
             width={0}
             height={0}
             sizes="100vw"
-            className="w-48 cursor-pointer mb-2"
+            className="w-40 cursor-pointer"
           />
         </Link>
 
         <NavigationMenu>
-          <NavigationMenuList className="flex space-x-4">
+          <NavigationMenuList className="flex space-x-8">
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link href="/om-oss">Om oss</Link>
+                <Link
+                  href="/om-oss"
+                  className="text-sm font-medium text-muted-foreground hover:text-rose-400 transition-colors duration-200"
+                >
+                  Om oss
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link href="/tjenester">Tjenester</Link>
+                <Link
+                  href="/tjenester"
+                  className="text-sm font-medium text-muted-foreground hover:text-rose-400 transition-colors duration-200"
+                >
+                  Tjenester
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild>
-                <Link href="/prosjekter">Prosjekter</Link>
+                <Link
+                  href="/prosjekter"
+                  className="text-sm font-medium text-muted-foreground hover:text-rose-400 transition-colors duration-200"
+                >
+                  Prosjekter
+                </Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
-        <Link href="/kontakt">
-          <Button size="lg" variant="secondary" className="rounded-full">
-            Kontakt oss
-          </Button>
-        </Link>
+        <Button asChild size="lg" className="rounded-full px-6">
+          <Link href="/kontakt">Kontakt oss</Link>
+        </Button>
       </div>
       <Separator />
     </nav>

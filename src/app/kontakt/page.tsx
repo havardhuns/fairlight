@@ -36,17 +36,31 @@ const Kontakt = async () => {
 
   return (
     <div>
-      <Title>Kontakt oss</Title>
+      <div className="max-w-lg mb-10">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-px bg-rose-400" />
+          <p className="text-xs font-semibold uppercase tracking-widest text-rose-400">
+            Ta kontakt
+          </p>
+        </div>
+        <Title>Kontakt oss</Title>
+      </div>
+
       <div className="py-4 grid grid-cols-1 md:grid-cols-2 grid-rows-4 gap-4 w-full">
         <Card className="col-span-1 row-span-1">
           <CardHeader>
             <CardTitle>Kontaktinformasjon</CardTitle>
           </CardHeader>
           <CardContent>
-            <Button asChild variant="link" className="text-lg p-0">
-              <a href={`mailto:${contactInfo?.email}`}>{contactInfo?.email}</a>
-            </Button>
-            <p className="text-lg">{contactInfo?.phone}</p>
+            <a
+              href={`mailto:${contactInfo?.email}`}
+              className="text-base text-muted-foreground hover:text-rose-400 transition-colors block"
+            >
+              {contactInfo?.email}
+            </a>
+            <p className="text-sm text-muted-foreground mt-1">
+              {contactInfo?.phone}
+            </p>
           </CardContent>
         </Card>
 
@@ -57,7 +71,7 @@ const Kontakt = async () => {
             <CardTitle>Hvor vi er</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col flex-1 gap-4">
-            <CardDescription className="text-xl">
+            <CardDescription className="text-base">
               Vi jobber over hele Norge – der vi trengs.
             </CardDescription>
             <MapsPreview address={address} coords={coords} />

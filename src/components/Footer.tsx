@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { client } from "@/sanity/lib/client";
 import { contactInfoQuery } from "@/sanity/lib/queries";
@@ -14,50 +13,55 @@ const Footer = async () => {
   return (
     <footer>
       <Separator />
-      <div className="flex items-start md:gap-32 lg:gap-64 px-8 md:px-32 lg:px-64 py-8">
-        <div className="flex flex-col">
+      <div className="flex items-start gap-12 md:gap-24 lg:gap-48 px-8 md:px-16 lg:px-32 py-10">
+        <div className="flex flex-col gap-3">
           <Image
             src="/logo.png"
             alt="Logo"
             width={0}
             height={0}
             sizes="100vw"
-            className="w-24 cursor-pointer mb-4"
+            className="w-24"
           />
-          <p className="text-sm text-zinc-400 max-w-xs">
+          <p className="text-sm text-muted-foreground max-w-[14rem] leading-relaxed">
             {contactInfo?.slogan}
           </p>
         </div>
 
         <div className="flex flex-col items-start invisible lg:visible">
-          <p className="text-sm font-bold mb-2">Meny</p>
-          <Button variant="link" className="p-0 h-6 font-light" asChild>
-            <Link href="/">Hjem</Link>
-          </Button>
-          <Button variant="link" className="p-0 h-6 font-light" asChild>
-            <Link href="/om-oss">Om oss</Link>
-          </Button>
-          <Button variant="link" className="p-0 h-6 font-light" asChild>
-            <Link href="/tjenester">Tjenester</Link>
-          </Button>
-          <Button variant="link" className="p-0 h-6 font-light" asChild>
-            <Link href="/prosjekter">Prosjekter</Link>
-          </Button>
-          <Button variant="link" className="p-0 h-6 font-light" asChild>
-            <Link href="/kontakt">Kontakt oss</Link>
-          </Button>
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+            Meny
+          </p>
+          {[
+            { label: "Hjem", href: "/" },
+            { label: "Om oss", href: "/om-oss" },
+            { label: "Tjenester", href: "/tjenester" },
+            { label: "Prosjekter", href: "/prosjekter" },
+            { label: "Kontakt oss", href: "/kontakt" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 py-0.5"
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
         <div className="flex flex-col items-start">
-          <p className="text-sm font-bold mb-2">Kontakt</p>
-          <Button
-            asChild
-            variant="link"
-            className="text-sm text-zinc-400 p-0 h-5 font-normal"
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">
+            Kontakt
+          </p>
+          <a
+            href={`mailto:${contactInfo?.email}`}
+            className="text-sm text-muted-foreground hover:text-rose-400 transition-colors duration-200 py-0.5"
           >
-            <a href={`mailto:${contactInfo?.email}`}>{contactInfo?.email}</a>
-          </Button>
-          <p className="text-sm text-zinc-400">{contactInfo?.phone}</p>
+            {contactInfo?.email}
+          </a>
+          <p className="text-sm text-muted-foreground py-0.5">
+            {contactInfo?.phone}
+          </p>
         </div>
       </div>
     </footer>

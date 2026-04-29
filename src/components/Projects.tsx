@@ -6,6 +6,8 @@ import {
   ProjectsOverviewQueryResult,
 } from "../../sanity.types";
 import { Description, Title } from "./ui/typography";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 const Projects = async () => {
   const projectOverview = await client.fetch<ProjectsOverviewQueryResult>(
@@ -19,11 +21,22 @@ const Projects = async () => {
 
   return (
     <>
-      <div className="flex flex-col gap-4 mt-16 md:mt-8 mb-4">
-        <Title>{projectOverview.title}</Title>
+      <div className="mt-16 md:mt-12 mb-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-px bg-rose-400" />
+          <p className="text-xs font-semibold uppercase tracking-widest text-rose-400">
+            Utvalgte prosjekter
+          </p>
+        </div>
+        <Title className="mb-2">{projectOverview.title}</Title>
         <Description>{projectOverview.description}</Description>
       </div>
       <ProjectCarousel projects={projects} />
+      <div className="flex justify-center mt-8">
+        <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+          <Link href="/prosjekter">Se alle prosjekter</Link>
+        </Button>
+      </div>
     </>
   );
 };
